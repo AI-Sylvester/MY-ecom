@@ -1,0 +1,46 @@
+CREATE TABLE product (
+    id SERIAL PRIMARY KEY,
+    barcode VARCHAR(50) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    hsn VARCHAR(20),
+    brand VARCHAR(100),
+    type VARCHAR(100),
+    style VARCHAR(100),
+    color VARCHAR(50),
+    size VARCHAR(50),
+    qty INTEGER DEFAULT 0,
+    crate INTEGER DEFAULT 0,
+    mrp DECIMAL(10, 2),
+    disrate1 DECIMAL(5, 2) DEFAULT 0,
+    disrate2 DECIMAL(5, 2) DEFAULT 0,
+    verified BOOLEAN DEFAULT FALSE
+);
+CREATE TABLE sellerinfo (
+    id SERIAL PRIMARY KEY,
+    sellercode VARCHAR(50) NOT NULL,
+    companyname VARCHAR(255) NOT NULL,
+    username VARCHAR(100) NOT NULL,
+    spassword VARCHAR(255) NOT NULL,
+    gstno VARCHAR(20),
+    email VARCHAR(255),
+    contact VARCHAR(15),
+    address TEXT,
+    verified BOOLEAN DEFAULT FALSE
+);
+CREATE TABLE customerinfo (
+    id SERIAL PRIMARY KEY,
+    cuscode VARCHAR(50) NOT NULL,
+    cusername VARCHAR(100) NOT NULL,
+    cpassword VARCHAR(255) NOT NULL,
+    cusname VARCHAR(255) NOT NULL,
+    cuscontact VARCHAR(15),
+    cusemail VARCHAR(255),
+    address1 TEXT,
+    verified BOOLEAN DEFAULT FALSE
+);
+CREATE TABLE adminlogin (
+    username VARCHAR(100) PRIMARY KEY,
+    password VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL
+);
+

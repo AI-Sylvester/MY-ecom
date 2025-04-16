@@ -1,0 +1,329 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* Header (Navbar) */
+nav {
+    background-color: #333;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+/* Main Content Layout */
+.shop-page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.main-content {
+    display: flex;
+    flex: 1;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* Filter Sidebar */
+.filter-sidebar {
+    width: 200px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-right: 2px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+    position: sticky;
+    top: 80px;
+    align-self: flex-start;
+}
+
+.filter-sidebar h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #333;
+}
+
+.filter-item {
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-item label {
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #555;
+}
+
+/* Section Filter - Checkboxes in Row */
+.section-filter {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.section-filter label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    color: #333;
+}
+
+/* Price Range Slider */
+.range-slider {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 90%;
+    height: 6px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #080808, #1f1e1c);
+    outline: none;
+    transition: background 0.3s ease-in-out;
+    margin: 5px 0;
+    position: relative;
+    z-index: 1;
+}
+
+/* Slider Thumb */
+.range-slider::-webkit-slider-thumb,
+.range-slider::-moz-range-thumb {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #f5f3f3;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    position: relative;
+    z-index: 2;
+}
+
+/* Hover Effect for Thumb */
+.range-slider::-webkit-slider-thumb:hover,
+.range-slider::-moz-range-thumb:hover {
+    transform: scale(1.2);
+    background: #FF3B3B;
+}
+
+/* Apply Button */
+.apply-button {
+    padding: 12px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.apply-button:hover {
+    background-color: #2e7d32;
+}
+
+/* Products Section */
+.products-container {
+    flex: 1;
+    background-color: #f9f9f9;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.products-container h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.products-container p {
+    text-align: center;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+/* 3 Products in a Row */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    justify-content: center;
+    padding: 10px;
+}
+
+/* Product Card */
+.card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    height: 100%;
+    max-width: 250px;
+    margin: auto;
+}
+
+  
+  .card.selected {
+    border: 3px solid #FFD700; /* Golden border for selection */
+    transform: scale(1.05);    /* Slight zoom effect */
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+  }
+  
+
+.card:hover {
+    transform: translateY(-5px);
+    
+    box-shadow: 0 6px 15px rgba(216, 213, 213, 0.2);
+}
+
+.card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.card:hover img {
+    transform: scale(1.05);
+}
+
+.card-content {
+   
+   width:100%;
+    padding: 10px;
+    text-align: center;
+    background-color: #fff;
+    flex: 1;
+}
+.card-content:hover {
+
+    padding: 10px;
+    text-align: center;
+    background-color: #efedf3;
+    flex: 1;
+}
+
+.card-content h3 {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.card-content p {
+    color: #555;
+    margin: 4px 0;
+    font-size: 14px;
+}
+
+/* Quantity Controls */
+.quantity-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 10px 0;
+}
+
+.quantity-button {
+    padding: 8px 15px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.quantity-button:hover {
+    background-color: #0056b3;
+}
+
+.quantity-label {
+    font-size: 16px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Add to Cart Button */
+.add-to-cart-button {
+    padding: 10px 20px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.add-to-cart-button:hover {
+    background-color: #1e7e34;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .cards-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .main-content {
+        flex-direction: column;
+    }
+
+    .filter-sidebar {
+        width: 100%;
+        position: relative;
+        top: 0;
+        border-right: none;
+        box-shadow: none;
+    }
+
+    .cards-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Clear Filters Button */
+.clear-filters-button {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.3s;
+}
+
+.clear-filters-button:hover {
+    background-color: #e60000;
+}
