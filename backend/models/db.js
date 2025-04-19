@@ -1,25 +1,30 @@
 const { Pool } = require('pg');
+const dotenv = require('dotenv');
+
+// Load environment variables from .env
+dotenv.config();
 
 // Create PostgreSQL client
 const pool = new Pool({
-  connectionString: 'postgres://postgres:1234@localhost/Ecom', // Adjust credentials as needed
-  port: 5432, // Specify the port
+  connectionString: process.env.DATABASE_URL,
+  ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
 });
 
-// Check if the database is connected
+// Test the DB connection
 pool.connect()
   .then(client => {
-    client.query('SELECT current_database()', (err, res) => {
-      if (err) {
-        console.error('Error executing query:', err.stack);
-      } else {
-        console.log(`Connected to database: ${res.rows[0].current_database}`);
-      }
-      client.release(); // Release the client back to the pool
-    });
+    return client.query('SELECT current_database()')
+      .then(res => {
+        console.log(`✅ Connected to database: ${res.rows[0].current_database}`);
+        client.release();
+      })
+      .catch(err => {
+        console.error('❌ Query error:', err.stack);
+        client.release();
+      });
   })
   .catch((err) => {
-    console.error('Error connecting to database:', err.stack);
+    console.error('❌ Error connecting to database:', err.stack);
   });
 
 module.exports = pool;
