@@ -56,6 +56,6 @@ app.post('/products', upload.single('image'), addProduct);
 app.get('/getProductsshop',getProducts);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Start the server
-app.listen(port, '192.168.1.51', () => {
+app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
