@@ -1,20 +1,23 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate for navigation
+import { useNavigate } from 'react-router-dom';
 import './SellerHomePage.css';
-function SellerHomePage() {
-  const navigate = useNavigate(); // Initialize the useNavigate hook
 
-  // Function to handle button clicks and navigate to different pages
+function SellerHomePage() {
+  const navigate = useNavigate();
+
+  // Navigate to a working route
   const navigateTo = (path) => {
-    navigate(path); // Navigate to the provided path
+    navigate(path);
   };
 
-  // Handle logout action
+  // Show under construction alert
+  const showUnderConstruction = () => {
+    alert('🚧 This section is under construction. Please check back later.');
+  };
+
+  // Handle logout
   const handleLogout = () => {
-    // Clear the token from localStorage (or sessionStorage)
     localStorage.removeItem('token');
-    // Optionally clear other authentication-related data if necessary
-    // Redirect to login page after logout
     navigate('/sellerlogin');
   };
 
@@ -23,41 +26,27 @@ function SellerHomePage() {
       <h1 className="dashboard-title">Seller Dashboard</h1>
 
       <div className="dashboard-buttons">
-        {/* Dashboard Button */}
-        <button
-          className="dashboard-button"
-          onClick={() => navigateTo('/dashboard')} // Navigate to the dashboard page
-        >
+        {/* Buttons */}
+        <button className="dashboard-button" onClick={showUnderConstruction}>
           Dashboard
         </button>
-{/* Profile Button */}
-<button
-          className="dashboard-button"
-          onClick={() => navigateTo('/addproduct')} // Navigate to the profile page
-        >
+
+        <button className="dashboard-button" onClick={() => navigateTo('/addproduct')}>
           Add Product
         </button>
-        {/* Profile Button */}
-        <button
-          className="dashboard-button"
-          onClick={() => navigateTo('/profile')} // Navigate to the profile page
-        >
+
+        <button className="dashboard-button" onClick={showUnderConstruction}>
           Profile
         </button>
 
-        {/* Sales Button */}
-        <button
-          className="dashboard-button"
-          onClick={() => navigateTo('/sales')} // Navigate to the sales page
-        >
+        <button className="dashboard-button" onClick={showUnderConstruction}>
           Sales
         </button>
 
-        {/* Logout Button */}
-        <button
-          className="dashboard-button"
-          onClick={handleLogout} // Handle logout
-        >
+        {/* Info Message */}
+        <p className="logout-message">🔒 Logout to view Shop Home Page</p>
+
+        <button className="dashboard-button" onClick={handleLogout}>
           Logout
         </button>
       </div>

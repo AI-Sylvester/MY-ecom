@@ -115,6 +115,11 @@ function AddProductPage() {
   return (
     <div className="add-product-page">
       <h1 className="add-product-page__title">Add Product</h1>
+            {/* 🔙 Back Button */}
+            <button className="add-product-page__back-button" onClick={() => navigate('/sellerhome')}>
+        ← Back to Dashboard
+      </button>
+
       {error && <p className="add-product-page__error">{error}</p>}
       {success && <p className="add-product-page__success">{success}</p>}
       <form onSubmit={handleSubmit} className="add-product-page__form">
@@ -316,6 +321,7 @@ function AddProductPage() {
             {loading ? 'Adding...' : 'Add Product'}
           </button>
         </div>
+        
       </form>
     </div>
   );

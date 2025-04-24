@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 50px 20px;
+    padding: 40px 20px;
     background: #f7f9fc;
     min-height: 100vh;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -12,10 +12,12 @@
   
   .dashboard-title {
     font-size: 2.5rem;
-    font-weight: bold;
+    font-weight: 600;
     color: #333;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
   
   .dashboard-buttons {
@@ -23,24 +25,32 @@
     flex-direction: column;
     gap: 20px;
     width: 100%;
-    max-width: 400px;
+    max-width: 450px;
   }
   
   .dashboard-button {
-    padding: 15px 25px;
-    font-size: 1.1rem;
+    padding: 16px 24px;
+    font-size: 1.125rem;
     font-weight: 500;
     background-color: #0066cc;
-    color: white;
+    color: #fff;
     border: none;
     border-radius: 8px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
     text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
   .dashboard-button:hover {
+    background-color: #005bb5;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    transform: translateY(-2px);
+  }
+  
+  .dashboard-button:active {
     background-color: #004a99;
+    transform: translateY(0);
   }
   
   @media (max-width: 600px) {
@@ -55,6 +65,41 @@
     .dashboard-button {
       font-size: 1rem;
       padding: 12px 20px;
+    }
+  }
+  
+  .logout-message {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: #555;
+    font-size: 1rem;
+    font-style: italic;
+    text-align: center;
+  }
+  
+  .logout-message a {
+    color: #0066cc;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .logout-message a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Responsive adjustments for larger screens */
+  @media (min-width: 768px) {
+    .seller-homepage {
+      padding: 60px 40px;
+    }
+  
+    .dashboard-title {
+      font-size: 2.8rem;
+    }
+  
+    .dashboard-button {
+      padding: 18px 30px;
+      font-size: 1.25rem;
     }
   }
   
