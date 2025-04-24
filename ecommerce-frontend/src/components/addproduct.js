@@ -1,7 +1,7 @@
 import React, { useState,useRef  } from 'react';
 import axios from '../axios';  // Import the configured axios instance
 import './addproduct.css';
-
+import { useNavigate } from 'react-router-dom';
 function AddProductPage() {
   const [formData, setFormData] = useState({
     barcode: '',
@@ -36,7 +36,7 @@ function AddProductPage() {
       setFormData({ ...formData, [name]: value }); // Use formData instead of product
     }
   };
-
+  const navigate = useNavigate(); // Add this line
   const handleImageChange = (e) => {
     setImage(e.target.files[0]);
   };
@@ -100,6 +100,7 @@ function AddProductPage() {
     imageInputRef.current.value = '';
   }
       alert('Product added successfully! Click OK to continue.');
+      navigate('/sellerhome'); // ✅ Navigate to seller homepage
     } catch (err) {
       // Catch any errors during the axios request
       console.error('Error adding product:', err);

@@ -9,7 +9,7 @@ function Navbar({ cartCount }) {
       {/* Logo and Heading wrapped in Link to Home */}
       <Link to="/" style={logoStyle}>
         <img src={logo} alt="Logo" style={logoImageStyle} />
-        <h1 style={headingStyle}>Styleria</h1>
+        <h1 style={headingStyle}>RiaShopy</h1>
       </Link>
 
       {/* Right side navigation links */}

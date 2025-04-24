@@ -13,7 +13,7 @@ function HomePage() {
     <div>
       <Navbar />
       <div className="home-page-container">
-        <h1>Welcome to Styletria</h1>
+        <h1>Welcome to RiaShopy</h1>
         <p>Great for fashion or lifestyle brands. Explore our products and great deals!</p>
 
         <div className="cards-container">
