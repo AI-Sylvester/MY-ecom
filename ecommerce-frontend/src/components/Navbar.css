@@ -1,0 +1,122 @@
+/* Navbar.css */
+
+.navbar {
+    background-color: #1f1f1f;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 25px;
+    position: relative;
+    z-index: 1000;
+    flex-wrap: wrap;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+  }
+  
+  .logo img {
+    height: 45px;
+    width: auto;
+    margin-right: 12px;
+  }
+  
+  .logo h1 {
+    font-size: 26px;
+    font-weight: 600;
+    margin: 0;
+    transition: color 0.3s ease;
+  }
+  
+  .nav-links {
+    list-style-type: none;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .nav-links li {
+    margin: 0 10px;
+  }
+  
+  .nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+  
+  .nav-links a:hover {
+    background-color: #444;
+    color: #ffdd57;
+  }
+  
+  .cart-icon {
+    font-size: 22px;
+  }
+  
+  .cart-count {
+    position: absolute;
+    top: -8px;
+    right: -10px;
+    background-color: red;
+    color: white;
+    border-radius: 50%;
+    padding: 3px 7px;
+    font-size: 13px;
+  }
+  
+  .menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 26px;
+    color: white;
+    cursor: pointer;
+  }
+  
+  /* Mobile Responsive */
+  @media (max-width: 768px) {
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 15px;
+    }
+  
+    .menu-toggle {
+      display: block;
+      position: absolute;
+      top: 15px;
+      right: 20px;
+    }
+  
+    .nav-links {
+      flex-direction: column;
+      width: 100%;
+      display: none;
+      margin-top: 20px;
+    }
+  
+    .nav-links.open {
+      display: flex;
+    }
+  
+    .nav-links li {
+      width: 100%;
+      text-align: left;
+      margin: 10px 0;
+    }
+  
+    .nav-links a {
+      width: 100%;
+      display: block;
+    }
+  }
+  
