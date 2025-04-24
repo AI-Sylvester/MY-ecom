@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import axios from '../axios';  // Import the configured axios instance
 import { useNavigate } from 'react-router-dom';
 import './ProductSlider.css';
 
@@ -9,7 +9,7 @@ function ProductSlider() {
   const navigate = useNavigate(); // React Router hook
 
   useEffect(() => {
-    axios.get('http://192.168.1.51:3000/getProductsshop')
+    axios.get('/getProductsshop')
       .then((response) => {
         setProducts(response.data);
       })
@@ -41,7 +41,7 @@ function ProductSlider() {
             onClick={() => handleProductClick(product.id)} // Click handler
           >
             <img
-              src={`http://192.168.1.51:3000${product.image}`}
+              src={`${axios.defaults.baseURL}${product.image}`}
               alt={product.name}
               className="slider-img"
             />

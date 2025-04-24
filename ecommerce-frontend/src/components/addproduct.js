@@ -1,5 +1,5 @@
 import React, { useState,useRef  } from 'react';
-import axios from 'axios';
+import axios from '../axios';  // Import the configured axios instance
 import './addproduct.css';
 
 function AddProductPage() {
@@ -67,7 +67,7 @@ function AddProductPage() {
 
     try {
       // Send data to backend using axios
-      const response = await axios.post('http://192.168.1.51:3000/products', formDataToSend);
+      const response = await axios.post('/products', formDataToSend);
 
       // Handle response
       console.log('Form Data Submitted:', response.data);
