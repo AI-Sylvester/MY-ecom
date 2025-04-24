@@ -16,7 +16,7 @@ app.use(bodyParser.json());
 // CORS Configuration
 const allowedOrigins = [
   'http://192.168.1.51:3001',  // Local IP (for local development)
-  'https://riazshopy.netlify.app/',  // Netlify URL (replace with your actual Netlify URL)
+  'https://riazshopy.netlify.app',  // Netlify URL (replace with your actual Netlify URL)
 ];
 
 app.use(cors({
@@ -57,5 +57,5 @@ app.get('/getProductsshop',getProducts);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Start the server
 app.listen(port, '192.168.1.51', () => {
-  console.log(`Server running at http://192.168.1.51:${port}`);
+  console.log(`Server running on port ${port}`);
 });
