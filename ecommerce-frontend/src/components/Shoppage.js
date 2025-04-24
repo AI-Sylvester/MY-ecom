@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from '../axios';  // Assuming axios is configured in this file
+import axios from '../axios';  // Import the configured axios instance
 import { useLocation } from 'react-router-dom';
 import Navbar from './navbar';
 import './ShopPage.css';
@@ -20,7 +20,6 @@ function ShopPage({ addToCart }) {
   const selectedProductId = queryParams.get('productId');
   const sectionFromURL = queryParams.get('section');
 
-  
   useEffect(() => {
     if (sectionFromURL) {
       const sections = sectionFromURL.split(',');
@@ -31,7 +30,7 @@ function ShopPage({ addToCart }) {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get(`/getProductsshop`, {
+        const response = await axios.get('/getProductsshop', {
           params: { 
             ...filters, 
             minMRP: priceRange[0], 
@@ -162,7 +161,7 @@ function ShopPage({ addToCart }) {
                 key={product.id}
                 className={`card ${selectedProductId === product.id ? 'selected' : ''}`}
               >
-                <img src={`${product.image}`} alt={product.name} />
+                <img src={`${axios.defaults.baseURL}${product.image}`} alt={product.name} />
                 <div className="card-content">
                   <h3>{product.name}</h3>
                   <p>Section: {product.section}</p>
