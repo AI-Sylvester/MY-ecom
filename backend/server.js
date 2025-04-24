@@ -14,12 +14,22 @@ const port = 3000;
 app.use(bodyParser.json());
 
 // CORS Configuration
+const allowedOrigins = [
+  'http://192.168.1.51:3001',  // Local IP (for local development)
+  'https://riazshopy.netlify.app/',  // Netlify URL (replace with your actual Netlify URL)
+];
+
 app.use(cors({
-  origin: 'http://192.168.1.51:3001',  // Allow only the frontend
-  methods: ['GET', 'POST','PUT','DELETE'],
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);  // Allow the request
+    } else {
+      callback(new Error('Not allowed by CORS'));  // Block the request
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
   allowedHeaders: ['Content-Type', 'Authorization'],
 }));
-
 // Serve static files (images) from the 'uploads' folder
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
