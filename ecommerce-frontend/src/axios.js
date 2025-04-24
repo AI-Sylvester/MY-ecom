@@ -7,11 +7,10 @@ const getBaseUrl = () => {
   // For local development, use localhost
   if (isLocalhost) {
     return 'http://localhost:3000'; // Local development on the same machine
-  } 
+  }
 
-  // For local network or production environments, use the local network IP address
-  const localNetworkIP = '192.168.1.51'; // Replace with your server's local IP address
-  return `http://${localNetworkIP}:3000`; // Local network server URL (change IP as needed)
+  // For production or non-local environments, use the production URL
+  return 'https://my-ecom-hdyc.onrender.com'; // Production URL
 };
 
 // Create an axios instance with dynamic base URL

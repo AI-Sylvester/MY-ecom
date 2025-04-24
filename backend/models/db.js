@@ -1,15 +1,13 @@
 const { Pool } = require('pg');
 
-// Create PostgreSQL client
-
+// Create PostgreSQL client with SSL connection
 const pool = new Pool({
   connectionString: 'postgresql://ecom_wkoi_user:EmtJJtgjskLTPjvvZ8bSRI6AVndb8ikY@dpg-d01kddqdbo4c738rodg0-a.singapore-postgres.render.com/ecom_wkoi',
+  port: 5432,
   ssl: {
-    rejectUnauthorized: false // This bypasses certificate validation. Use with caution in production.
-  },
-  port: 5432
+    rejectUnauthorized: false, // Optional: Add this if the server uses self-signed certificates
+  }
 });
-
 
 // Check if the database is connected
 pool.connect()

@@ -20,6 +20,19 @@ function ShopPage({ addToCart }) {
   const selectedProductId = queryParams.get('productId');
   const sectionFromURL = queryParams.get('section');
 
+  // Function to determine the base URL dynamically
+  const getBaseUrl = () => {
+    const isLocalhost = window.location.hostname === 'localhost'; // Check if on localhost
+
+    // For local development, use localhost
+    if (isLocalhost) {
+      return 'http://localhost:3000'; // Local development on the same machine
+    }
+
+    // For production, use the production URL
+    return 'https://my-ecom-hdyc.onrender.com'; // Production URL
+  };
+
   useEffect(() => {
     if (sectionFromURL) {
       const sections = sectionFromURL.split(',');
@@ -30,7 +43,7 @@ function ShopPage({ addToCart }) {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await axios.get('http://192.168.1.51:3000/getProductsshop', {
+        const response = await axios.get(`${getBaseUrl()}/getProductsshop`, {
           params: { 
             ...filters, 
             minMRP: priceRange[0], 
@@ -161,7 +174,7 @@ function ShopPage({ addToCart }) {
                 key={product.id}
                 className={`card ${selectedProductId === product.id ? 'selected' : ''}`}
               >
-                <img src={`http://192.168.1.51:3000${product.image}`} alt={product.name} />
+                <img src={`${getBaseUrl()}${product.image}`} alt={product.name} />
                 <div className="card-content">
                   <h3>{product.name}</h3>
                   <p>Section: {product.section}</p>
