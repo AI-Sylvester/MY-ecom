@@ -152,7 +152,7 @@ function ShopPage({ addToCart }) {
         </div>
 
         <div className="products-container">
-          <h1>Welcome to the Styletria</h1>
+          <h1>Welcome to the RiaShopy</h1>
           <p>Browse and buy your favorite products.</p>
 
           <div className="cards-container">

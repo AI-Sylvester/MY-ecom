@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import axios from '../axios';  // Import the configured axios instance
+import React, { useState, useEffect } from 'react';
+import axios from '../axios';
 import { useNavigate } from 'react-router-dom';
 import './ProductSlider.css';
 
 function ProductSlider() {
   const [products, setProducts] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const navigate = useNavigate(); // React Router hook
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios.get('/getProductsshop')
@@ -16,42 +16,50 @@ function ProductSlider() {
       .catch((error) => console.error('Error fetching products:', error));
   }, []);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % products.length);
-    }, 3000);
-
-    return () => clearInterval(interval);
-  }, [products.length]);
-
   const handleProductClick = (productId) => {
-    navigate(`/shop?productId=${productId}`); // Navigate with query param
+    navigate(`/shop?productId=${productId}`);
   };
 
-  if (products.length === 0) return <p>Loading products...</p>;
+  const goToNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % products.length);
+  };
+
+  const goToPrevious = () => {
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + products.length) % products.length
+    );
+  };
 
   return (
     <div className="slider-container">
       <h2>Featured Products</h2>
       <div className="slider">
-        {products.map((product, index) => (
-          <div
-            key={product.id}
-            className={`slider-card ${index === currentIndex ? 'active' : ''}`}
-            onClick={() => handleProductClick(product.id)} // Click handler
-          >
-            <img
-              src={`${axios.defaults.baseURL}${product.image}`}
-              alt={product.name}
-              className="slider-img"
-            />
-            <div className="slider-content">
-              <h3>{product.name}</h3>
-              <p>Price: ₹{product.mrp}</p>
-              <p>{product.description}</p>
+        <button className="slider-button left" onClick={goToPrevious}>
+          &#8249;
+        </button>
+        <div className="slider-track" style={{ transform: `translateX(-${currentIndex * 270}px)` }}>
+          {products.map((product) => (
+            <div
+              key={product.id}
+              className="slider-card"
+              onClick={() => handleProductClick(product.id)}
+            >
+              <img
+                src={`${axios.defaults.baseURL}${product.image}`}
+                alt={product.name}
+                className="slider-img"
+              />
+              <div className="slider-content">
+                <h3>{product.name}</h3>
+                <p>Price: ₹{product.mrp}</p>
+                <p>{product.description}</p>
+              </div>
             </div>
-          </div>
-        ))}
+          ))}
+        </div>
+        <button className="slider-button right" onClick={goToNext}>
+          &#8250;
+        </button>
       </div>
     </div>
   );
